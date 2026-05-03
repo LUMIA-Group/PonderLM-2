@@ -1,0 +1,31 @@
+{
+  "minipile": {
+    "hf_hub_url": "JeanKaddour/minipile",
+    "ms_hub_url": "AI-ModelScope/minipile",
+    "split": "train",
+    "columns": {
+      "prompt": "text"
+    }
+  },
+  "smallpile": {
+    "hf_hub_url": "gngdb/subset_the_pile_deduplicated",
+    "ms_hub_url": "AI-ModelScope/subset_the_pile_deduplicated",
+    "columns": {
+      "prompt": "text"
+    }
+  },
+  "testpile": {
+    "hf_hub_url": "mit-han-lab/pile-val-backup",
+    "ms_hub_url": "AI-ModelScope/pile-val-backup",
+    "split": "validation",
+    "columns": {
+      "prompt": "text"
+    }
+  },
+  "uint16smallpile": {
+    "hf_hub_url": "hyq718/uint16smallpile",
+    "columns": {
+      "prompt": "text"
+    }
+  }
+}

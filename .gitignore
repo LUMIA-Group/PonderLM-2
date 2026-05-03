@@ -1,0 +1,46 @@
+# Python build / install artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+*.egg
+build/
+dist/
+.eggs/
+pip-wheel-metadata/
+
+# Virtual envs
+.venv/
+venv/
+env/
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Run-time outputs
+saves/
+runs/
+outputs/
+wandb/
+*.log
+*.out
+
+# Local data caches
+data/tokenized_data/
+data/*.npy
+data/*.pkl
+data/cache/
+
+# Misc
+.coverage
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
