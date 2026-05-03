@@ -37,11 +37,11 @@ reference all share the same CLI and switch with one flag:
 
 | `--patch_method` | Method | Reference |
 |---|---|---|
-| `ours`     | **PonderLM-2** (this paper)             | Zeng et al., ICML 2026 |
-| `ponderlm` | PonderLM                                | [LUMIA-Group/PonderingLM](https://github.com/LUMIA-Group/PonderingLM) |
-| `loop`     | Loop (weight-shared layer stack)        | folklore |
-| `pause`    | Pause Token                             | Goyal et al., 2024 |
-| `vanilla`  | Stock Llama / GPT-NeoX                  | — |
+| `ours`     | **PonderLM-2** (this paper)             | [Zeng et al., ICML 2026](https://arxiv.org/abs/2509.23184) |
+| `ponderlm` | PonderLM                                | [Zeng et al., 2025](https://arxiv.org/abs/2505.20674) |
+| `loop`     | Loop (weight-shared layer stack)        | [Lan et al., ICLR 2020 (ALBERT)](https://arxiv.org/abs/1909.11942) |
+| `pause`    | Pause Token                             | [Goyal et al., ICLR 2024](https://arxiv.org/abs/2310.02226) |
+| `vanilla`  | Stock Llama / GPT-NeoX                  | [Touvron et al., 2023 (LLaMA)](https://arxiv.org/abs/2302.13971) |
 
 Released checkpoints on the Hugging Face Hub:
 
@@ -227,12 +227,11 @@ PonderLM-2/
 ## Citation
 
 ```bibtex
-@inproceedings{zeng2026ponderlm2,
-  title     = {{PonderLM-2}: Pretraining Language Models with Latent Thoughts},
-  author    = {Zeng, Boyi and others},
-  booktitle = {Proceedings of the 43rd International Conference on Machine Learning},
-  year      = {2026},
-  note      = {Spotlight}
+@article{zeng2025ponderlm,
+  title={Ponderlm-2: Pretraining llm with latent thoughts in continuous space},
+  author={Zeng, Boyi and Li, He and Song, Shixiang and Wang, Yixuan and Wang, Zitong and He, Ziwei and Wang, Xinbing and Lin, Zhouhan},
+  journal={arXiv preprint arXiv:2509.23184},
+  year={2025}
 }
 ```
 
