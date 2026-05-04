@@ -50,6 +50,30 @@ Released checkpoints on the Hugging Face Hub:
 
 ---
 
+## Repository tour
+
+```
+PonderLM-2/
+├── scripts/                      # one script per row of Table 3 + quickstart
+├── llama_config/                 # Llama configs (125m, 410m, 834m, 1.4b, 2.8b)
+├── pythia_config/                # Pythia configs (410m)
+├── examples/deepspeed/           # ZeRO configs used in the paper
+├── data/dataset_info.json        # minipile, smallpile, testpile, uint16smallpile
+└── src/llamafactory/model/
+    ├── llama_patch.py                                   # method swap entry point
+    └── modeling/
+        ├── modeling_llama.py                            # PonderLM-2 (Llama, w/ KV-cache)
+        ├── modeling_llama_orin.py                       # PonderLM   (Llama)
+        ├── modeling_llama_loop.py                       # Loop       (Llama)
+        ├── modeling_llama_pause.py                      # Pause      (Llama)
+        ├── modeling_gpt_neox.py                         # PonderLM-2 (GPT-NeoX)
+        ├── modeling_gpt_neox_addhidden.py               # PonderLM   (GPT-NeoX)
+        ├── modeling_gpt_neox_addhidden_weightshare.py   # Loop       (GPT-NeoX)
+        └── modeling_gpt_neox_addpausetoken.py           # Pause      (GPT-NeoX)
+```
+
+---
+
 ## Install
 
 ```bash
@@ -197,30 +221,6 @@ patch_llama_ponderlm2()
 
 The Llama path supports the standard KV-cache, so `model.generate` works
 the same way as for any HuggingFace transformer.
-
----
-
-## Repository tour
-
-```
-PonderLM-2/
-├── scripts/                      # one script per row of Table 3 + quickstart
-├── llama_config/                 # Llama configs (125m, 410m, 834m, 1.4b, 2.8b)
-├── pythia_config/                # Pythia configs (410m)
-├── examples/deepspeed/           # ZeRO configs used in the paper
-├── data/dataset_info.json        # minipile, smallpile, testpile, uint16smallpile
-└── src/llamafactory/model/
-    ├── llama_patch.py                                   # method swap entry point
-    └── modeling/
-        ├── modeling_llama.py                            # PonderLM-2 (Llama, w/ KV-cache)
-        ├── modeling_llama_orin.py                       # PonderLM   (Llama)
-        ├── modeling_llama_loop.py                       # Loop       (Llama)
-        ├── modeling_llama_pause.py                      # Pause      (Llama)
-        ├── modeling_gpt_neox.py                         # PonderLM-2 (GPT-NeoX)
-        ├── modeling_gpt_neox_addhidden.py               # PonderLM   (GPT-NeoX)
-        ├── modeling_gpt_neox_addhidden_weightshare.py   # Loop       (GPT-NeoX)
-        └── modeling_gpt_neox_addpausetoken.py           # Pause      (GPT-NeoX)
-```
 
 ---
 
