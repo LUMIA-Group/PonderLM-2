@@ -124,19 +124,30 @@ FORCE_TORCHRUN=1 llamafactory-cli train \
 
 For a vanilla baseline next to it, replace `--patch_method ours` with
 `--patch_method vanilla` and drop `--recurrent_model true`; the rest of the
-ponder flags become no-ops. **Side by side, PonderLM-2's training loss is
-visibly below the vanilla curve from very early on.**
+ponder flags become no-ops. **After a few thousand steps the PonderLM-2
+training loss settles below the vanilla curve and stays there for the rest
+of the run.**
 
 ---
 
 ## Smaller-compute companion (Llama-410m on smallpile)
 
-If 8×H100 for ~30 hours is too much, this 410m recipe is identical to
-Table 3 except `lr=3e-4` and the model size, and runs comfortably on a
-single 8-GPU node in a few hours. It compares **PonderLM-2** against
-**Loop with 3 extra passes** and a vanilla baseline that has **twice the
-parameters** (the same 410m architecture with the layer count doubled
-from 24 to 48; ≈ 820M params, config at `llama_config/410m_x2depth`).
+A lighter, cheaper version of the Table 3 experiments below — same
+recipe, just `lr=3e-4` and the 410m base. Useful for sanity-checking the
+method or for users without enough compute to run the full 1.4b sweep.
+
+The corpus is the same `smallpile` (`uint16`-tokenised) used in Table 3:
+
+```bash
+mkdir -p data/tokenized_data
+huggingface-cli download hyq718/uint16smallpile \
+    --repo-type dataset --local-dir data/tokenized_data/smallpile
+```
+
+Three runs to compare PonderLM-2 against Loop=3 (extra passes through
+the layer stack) and a *2× parameters* vanilla baseline (the 410m
+architecture with the layer count doubled from 24 to 48, ≈ 820M params,
+config at `llama_config/410m_x2depth`):
 
 ```bash
 bash scripts/train_ponderlm2_llama_410m.sh           # ours, 410m
@@ -144,10 +155,9 @@ bash scripts/train_loop_llama_410m.sh                # Loop, K=3, 410m
 bash scripts/train_vanilla_llama_410m_x2depth.sh     # vanilla, 410m × 2 depth (≈820M)
 ```
 
-The expected outcome — and the cheap way to convince yourself
-PonderLM-2 isn't just "more tokens per step" — is that the 410m
-PonderLM-2 run lands below the doubled-depth 820M vanilla curve at the
-same step count.
+We observe that the 410m PonderLM-2 run ends up with lower loss than
+both the K=3 Loop baseline and the doubled-depth 820M vanilla model at
+the same step count.
 
 ---
 
