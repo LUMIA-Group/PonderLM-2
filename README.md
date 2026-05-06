@@ -155,18 +155,12 @@ bash scripts/train_pause_llama_1_4b.sh       # Pause Token
 bash scripts/train_vanilla_llama_1_4b.sh     # vanilla reference
 ```
 
-Each script accepts three environment variables:
-
-```bash
-MODEL_CFG=llama_config/410m \
-TOKENIZED=data/tokenized_data/smallpile \
-OUTPUT_DIR=runs/ponderlm2_llama_410m \
-bash scripts/train_ponderlm2_llama_1_4b.sh
-```
-
-For Pythia / GPT-NeoX, point `MODEL_CFG` at `pythia_config/410m` (or `1.4b`).
-Multi-node works out of the box through the LLaMA-Factory launcher — just
-prefix with `torchrun --nnodes ...` or your scheduler's launcher.
+Each script picks up three environment variables (`MODEL_CFG`, `TOKENIZED`,
+`OUTPUT_DIR`) so you can override the model config, the tokenised-data
+path, or where checkpoints get written without touching the script.
+Switch to GPT-NeoX with `MODEL_CFG=pythia_config/1.4b` (or `410m`).
+Multi-node works through the LLaMA-Factory launcher — just prefix the
+command with `torchrun --nnodes ...` or your scheduler's launcher.
 
 ---
 
