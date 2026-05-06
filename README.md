@@ -129,6 +129,28 @@ visibly below the vanilla curve from very early on.**
 
 ---
 
+## Smaller-compute companion (Llama-410m on smallpile)
+
+If 8×H100 for ~30 hours is too much, this 410m recipe is identical to
+Table 3 except `lr=3e-4` and the model size, and runs comfortably on a
+single 8-GPU node in a few hours. It compares **PonderLM-2** against
+**Loop with 3 extra passes** and a vanilla baseline that has **twice the
+parameters** (the same 410m architecture with the layer count doubled
+from 24 to 48; ≈ 820M params, config at `llama_config/410m_x2depth`).
+
+```bash
+bash scripts/train_ponderlm2_llama_410m.sh           # ours, 410m
+bash scripts/train_loop_llama_410m.sh                # Loop, K=3, 410m
+bash scripts/train_vanilla_llama_410m_x2depth.sh     # vanilla, 410m × 2 depth (≈820M)
+```
+
+The expected outcome — and the cheap way to convince yourself
+PonderLM-2 isn't just "more tokens per step" — is that the 410m
+PonderLM-2 run lands below the doubled-depth 820M vanilla curve at the
+same step count.
+
+---
+
 ## Reproducing Table 3 (Llama-1.4b on smallpile)
 
 Table 3 of the paper compares PonderLM-2 against Pause Token, Loop, and

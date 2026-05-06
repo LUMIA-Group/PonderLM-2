@@ -1,19 +1,19 @@
 {
-    "_name_or_path": "/home/sgugger/tmp/llama/llama-125m/",
+    "_name_or_path": "llama_config/410m_x2depth",
     "architectures": [
       "LlamaForCausalLM"
     ],
     "bos_token_id": 0,
     "eos_token_id": 0,
     "hidden_act": "silu",
-    "hidden_size": 768,
+    "hidden_size": 1024,
     "initializer_range": 0.02,
-    "intermediate_size": 2064,
+    "intermediate_size": 2752,
     "max_position_embeddings": 2048,
     "max_sequence_length": 2048,
     "model_type": "llama",
-    "num_attention_heads": 12,
-    "num_hidden_layers": 12,
+    "num_attention_heads": 16,
+    "num_hidden_layers": 48,
     "pad_token_id": 1,
     "rms_norm_eps": 1e-1,
     "tie_word_embeddings": false,
@@ -21,5 +21,4 @@
     "transformers_version": "4.28.0.dev0",
     "use_cache": true,
     "vocab_size": 50304
-  }
-  
+}

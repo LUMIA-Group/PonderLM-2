@@ -15,7 +15,7 @@
     "num_attention_heads": 32,
     "num_hidden_layers": 48,
     "pad_token_id": 1,
-    "rms_norm_eps": 1e-05,
+    "rms_norm_eps": 1e-1,
     "tie_word_embeddings": false,
     "torch_dtype": "float16",
     "transformers_version": "4.28.0.dev0",
